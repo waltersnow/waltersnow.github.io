@@ -1,2 +1,3 @@
 # walter.github.io
-My first page
+Python will be my next tour of coding.
+Fighting ever and ever
