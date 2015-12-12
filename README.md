@@ -1,3 +1,3 @@
 # walter.github.io
-Python will be my next tour of coding. 
-Fighting ever and ever
+Python will be my next tour of coding.  
+Fighting ever and ever.
