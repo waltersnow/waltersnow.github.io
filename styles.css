@@ -60,34 +60,19 @@ h1, h2 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-height: 500px;
   overflow-y: auto; /* 只允许日记模块滚动 */
+  position: relative; /* 使标题可以固定 */
 }
 
+/* 固定日记记录的标题 */
 .diary-records-title {
   font-size: 18px;
   color: #444;
   margin-bottom: 10px;
   position: sticky;
   top: 0;
-  background-color: #ffffff;
-  z-index: 1;
-}
-
-.diary-records::-webkit-scrollbar {
-  width: 6px;
-}
-
-.diary-records::-webkit-scrollbar-thumb {
-  background-color: #ddd;
-  border-radius: 8px;
-}
-
-/* 缺省文案样式 */
-.default-message {
-  text-align: center;
-  color: #888;
-  font-size: 16px;
-  margin-top: 20px;
-  font-style: italic;
+  background-color: #ffffff; /* 让背景不受滚动影响 */
+  padding: 10px;
+  z-index: 1; /* 让标题位于内容上层 */
 }
 
 /* 每条日记记录的样式 */
