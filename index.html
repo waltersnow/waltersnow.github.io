@@ -1,69 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>日记记录</title>
-    <link rel="stylesheet" href="styles.css"> <!-- 引入外部CSS文件 -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>四行日记</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <div class="container">
-        <!-- 顶部标题区域 -->
-        <div class="header">
-            <h1>四行日记与用30天的日记改变行为</h1>
-            <p>记录每天的点滴，逐步改变自己的生活习惯</p>
-        </div>
-
-        <div class="main-content">
-            <!-- 日记记录模块 -->
-            <div class="diary-records">
-                <!-- 固定标题区域 -->
-                <div class="diary-records-title">日记记录</div>
-
-                <!-- 滚动内容区域 -->
-                <div class="diary-records-content">
-                    <div class="default-message">快来开启30天的日记吧～</div>
-
-                    <!-- 示例日记记录 -->
-                    <div class="diary-entry">
-                        <p class="entry-date">2024-12-07 14:35:50</p>
-                        <p><strong>行为:</strong> 今天做了运动</p>
-                        <p><strong>现象:</strong> 感觉身体变得更加有活力</p>
-                        <p><strong>发现:</strong> 每天做运动能够提升我的精力</p>
-                        <p><strong>宣言:</strong> 我决定坚持每天锻炼30分钟</p>
-                    </div>
-                    <div class="diary-entry">
-                        <p class="entry-date">2024-12-06 16:20:30</p>
-                        <p><strong>行为:</strong> 读了一本新书</p>
-                        <p><strong>现象:</strong> 读书让我更加有思考力</p>
-                        <p><strong>发现:</strong> 阅读提升了我的思维能力</p>
-                        <p><strong>宣言:</strong> 我要每个月读一本书</p>
-                    </div>
-
-                    <!-- 更多日记记录会动态添加到这里 -->
-
-                    <!-- 加载更多按钮 -->
-                    <div class="load-more">加载更多</div>
-                </div>
-            </div>
-
-            <!-- 填写日记模块 -->
-            <div class="diary-form">
-                <div class="diary-form-title">填写日记</div>
-                <form id="diaryForm">
-                    <input type="text" id="behavior" placeholder="行为" required>
-                    <input type="text" id="phenomenon" placeholder="现象" required>
-                    <input type="text" id="discovery" placeholder="发现" required>
-                    <input type="text" id="declaration" placeholder="宣言" required>
-                    <button type="submit">提交</button>
-                </form>
-            </div>
-        </div>
+  <header>
+    <div class="header-content">
+      <h1>四行日记</h1>
+      <p>用30天的日记改变行为</p>
     </div>
+  </header>
 
-    <script src="script.js"></script> <!-- 引入外部JS文件 -->
+  <main>
+    <div class="container">
+      <!-- 左侧：日记记录 -->
+      <section class="diary-list">
+        <div class="diary-header">
+          <h2>日记记录</h2>
+        </div>
+        <div id="diary-entries">
+          <!-- 如果没有记录，显示缺省文案 -->
+          <p id="no-entries-message" style="display: none;">快来开启30天的日记吧～</p>
+        </div>
+        <!-- 按钮直接跟随日记列表的最后一项 -->
+        <p id="load-more" style="display: none;" class="load-more">加载更多</p>
+      </section>
+
+      <!-- 右侧：填写日记 -->
+      <section class="diary-form">
+        <div class="form-header">
+          <h2>填写日记</h2>
+        </div>
+        <form id="diary-form">
+          <label for="action">行为</label>
+          <textarea id="action" name="action" required></textarea>
+          
+          <label for="phenomenon">现象</label>
+          <textarea id="phenomenon" name="phenomenon" required></textarea>
+          
+          <label for="discovery">发现</label>
+          <textarea id="discovery" name="discovery" required></textarea>
+          
+          <label for="declaration">宣言</label>
+          <textarea id="declaration" name="declaration" required></textarea>
+          
+          <button type="submit">提交</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
