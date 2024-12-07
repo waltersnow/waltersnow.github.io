@@ -62,10 +62,14 @@ h1, h2 {
   overflow-y: auto; /* 只允许日记模块滚动 */
 }
 
-.diary-records h3 {
+.diary-records-title {
   font-size: 18px;
   color: #444;
   margin-bottom: 10px;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 1;
 }
 
 .diary-records::-webkit-scrollbar {
@@ -173,8 +177,8 @@ h1, h2 {
 }
 
 /* 提交按钮 */
-.diary-form button {
-  width: calc(100% - 20px); /* 按钮宽度与输入框一致 */
+.submit-btn {
+  width: 100%; /* 按钮宽度与输入框一致 */
   padding: 10px;
   background: linear-gradient(to right, #56cfe1, #72efdd); /* 青蓝色渐变 */
   color: #ffffff;
@@ -183,12 +187,13 @@ h1, h2 {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  text-align: center;
 }
 
-.diary-form button:hover {
+.submit-btn:hover {
   background: linear-gradient(to right, #72efdd, #56cfe1);
 }
 
-.diary-form button:active {
+.submit-btn:active {
   transform: scale(0.98);
 }
