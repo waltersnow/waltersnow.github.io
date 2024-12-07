@@ -3,12 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const noEntriesMessage = document.getElementById("no-entries-message");
   const loadMoreButton = document.getElementById("load-more");
 
-  // 初始化数据
+  // 初始化日记数据
   let entries = [];
 
   // 渲染日记记录
   const renderEntries = () => {
-    diaryEntries.innerHTML = ""; // 清空现有内容
+    diaryEntries.innerHTML = ""; // 清空日记记录
 
     if (entries.length === 0) {
       // 显示缺省文案
@@ -17,15 +17,21 @@ document.addEventListener("DOMContentLoaded", () => {
       // 隐藏缺省文案
       noEntriesMessage.style.display = "none";
 
+      // 渲染每条日记
       entries.forEach(entry => {
         const entryDiv = document.createElement("div");
         entryDiv.className = "diary-entry";
-        entryDiv.textContent = entry;
+        entryDiv.innerHTML = `
+          <p><strong>行为:</strong> ${entry.action}</p>
+          <p><strong>现象:</strong> ${entry.phenomenon}</p>
+          <p><strong>发现:</strong> ${entry.discovery}</p>
+          <p><strong>宣言:</strong> ${entry.declaration}</p>
+        `;
         diaryEntries.appendChild(entryDiv);
       });
     }
 
-    // 将“加载更多”按钮追加到末尾
+    // 加载更多按钮紧跟最后一条记录
     loadMoreButton.style.display = entries.length > 0 ? "block" : "none";
     diaryEntries.appendChild(loadMoreButton);
   };
@@ -41,23 +47,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const declaration = document.getElementById("declaration").value.trim();
 
     if (action && phenomenon && discovery && declaration) {
-      const newEntry = `
-        行为: ${action}
-        现象: ${phenomenon}
-        发现: ${discovery}
-        宣言: ${declaration}
-      `;
+      // 构造新日记条目
+      const newEntry = { action, phenomenon, discovery, declaration };
+
+      // 将新日记添加到数组
       entries.push(newEntry);
+
+      // 清空表单
       document.getElementById("diary-form").reset();
+
+      // 更新页面
       renderEntries();
     } else {
-      alert("请完整填写所有日记字段！");
+      alert("请完整填写所有字段！");
     }
   });
 
   // 加载更多按钮事件
   loadMoreButton.addEventListener("click", () => {
-    entries.push("这是加载的新日记内容...");
+    entries.push({
+      action: "示例行为",
+      phenomenon: "示例现象",
+      discovery: "示例发现",
+      declaration: "示例宣言"
+    });
     renderEntries();
   });
 
