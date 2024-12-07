@@ -50,31 +50,26 @@ body {
 
 /* 日记记录模块 */
 .diary-records {
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ddd;
+  background-color: white;
+  padding: 15px;
   border-radius: 8px;
-  background-color: #ffffff;
-  max-height: 500px; /* 限制模块总高度 */
+  margin-top: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* 避免滚动内容溢出模块 */
-  position: relative;
+  position: relative; /* 使标题可以固定 */
 }
 
-/* 固定的标题 */
+/* 固定标题区域 */
 .diary-records-title {
   font-size: 18px;
+  font-weight: bold;
   color: #444;
-  height: 60px; /* 固定高度 */
-  line-height: 60px; /* 垂直居中 */
+  margin-bottom: 15px;
   text-align: left;
-  padding: 0 15px; /* 左右内边距 */
-  background-color: #ffffff; /* 设置背景色 */
-  border-bottom: 1px solid #ddd; /* 分隔线 */
-  position: sticky; /* 固定标题 */
-  top: 0;
-  z-index: 10; /* 保证标题层级高于滚动内容 */
+  position: sticky; /* 固定 */
+  top: 0; /* 固定在顶部 */
+  background-color: white; /* 背景设为白色，以便与内容区域区分 */
+  z-index: 1; /* 确保标题在其他内容之上 */
+  padding: 10px 0; /* 给标题区域一些内边距 */
 }
 
 /* 滚动内容区域 */
