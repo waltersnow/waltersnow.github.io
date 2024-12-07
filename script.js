@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
+    diaryEntries.appendChild(loadMoreButton); // 将按钮始终放置在末尾
     loadMoreButton.style.display = entries.length > 0 ? "block" : "none";
-    diaryEntries.appendChild(loadMoreButton);
   };
 
   document.getElementById("diary-form").addEventListener("submit", (event) => {
@@ -40,12 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const declaration = document.getElementById("declaration").value.trim();
 
     if (action && phenomenon && discovery && declaration) {
-      const today = new Date().toISOString().split("T")[0]; // 添加日期
-
+      const today = new Date().toISOString().split("T")[0];
       const newEntry = { date: today, action, phenomenon, discovery, declaration };
 
       entries.push(newEntry);
-
       document.getElementById("diary-form").reset();
       renderEntries();
     } else {
