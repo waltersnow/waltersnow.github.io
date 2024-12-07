@@ -88,12 +88,12 @@ h1, h2 {
 
 /* 每条日记记录的样式 */
 .diary-entry {
-  background: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.diary-entry:last-child {
+  border-bottom: none; /* 最后一条日记不显示下划线 */
 }
 
 .diary-entry p {
@@ -108,9 +108,9 @@ h1, h2 {
 
 .entry-date {
   font-size: 14px;
-  color: #888;
+  color: #444;
   margin-bottom: 10px;
-  text-align: right;
+  text-align: left;
 }
 
 /* 加载更多按钮样式 */
