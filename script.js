@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const loadMoreButton = document.getElementById("load-more");
 
   let entries = [];
+  let entriesToShow = 3; // 控制初始加载的日记数
 
   const renderEntries = () => {
     diaryEntries.innerHTML = ""; // 清空日记记录
@@ -13,7 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       noEntriesMessage.style.display = "none"; // 隐藏缺省文案
 
-      entries.forEach(entry => {
+      // 显示当前要展示的日记条数
+      const entriesToRender = entries.slice(0, entriesToShow);
+
+      entriesToRender.forEach(entry => {
         const entryDiv = document.createElement("div");
         entryDiv.className = "diary-entry";
         entryDiv.innerHTML = `
@@ -27,10 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // 控制加载更多按钮的显示逻辑
-      loadMoreButton.style.display = entries.length > 3 ? "block" : "none";
-      if (entries.length > 3) {
-        diaryEntries.appendChild(loadMoreButton); // 放置在最后一个
-      }
+      loadMoreButton.style.display = entries.length > entriesToShow ? "block" : "none";
     }
   };
 
@@ -55,13 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   loadMoreButton.addEventListener("click", () => {
-    entries.push({
-      date: new Date().toISOString().split("T")[0],
-      action: "示例行为",
-      phenomenon: "示例现象",
-      discovery: "示例发现",
-      declaration: "示例宣言"
-    });
+    entriesToShow += 1; // 每次点击加载一条记录
     renderEntries();
   });
 
