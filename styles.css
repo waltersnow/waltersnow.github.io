@@ -56,28 +56,28 @@ h1, h2 {
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #ffffff;
-  padding: 15px;
+  padding: 0; /* 移除内边距 */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-height: 500px;
-  overflow-y: auto; /* 只允许日记模块滚动 */
-  position: relative; /* 使标题可以固定 */
+  overflow-y: auto; /* 启用垂直滚动 */
 }
 
-/* 固定日记记录的标题 */
+/* 日记记录的标题 */
 .diary-records-title {
   font-size: 18px;
   color: #444;
-  margin-bottom: 10px;
-  position: sticky;
-  top: 0;
-  background-color: #ffffff; /* 让背景不受滚动影响 */
-  padding: 10px;
-  z-index: 1; /* 让标题位于内容上层 */
+  height: 60px; /* 固定标题高度 */
+  line-height: 60px; /* 使文本垂直居中 */
+  text-align: left;
+  padding: 0 15px; /* 为标题增加左右内边距 */
+  border-bottom: 1px solid #ddd; /* 与内容分隔 */
+  background-color: #ffffff; /* 设置背景颜色 */
+  z-index: 1; /* 保证标题的优先展示 */
 }
 
 /* 每条日记记录的样式 */
 .diary-entry {
-  padding: 15px 0;
+  padding: 15px 15px;
   border-bottom: 1px solid #ddd;
 }
 
@@ -100,6 +100,15 @@ h1, h2 {
   color: #444;
   margin-bottom: 10px;
   text-align: left;
+}
+
+/* 缺省文案样式 */
+.default-message {
+  text-align: center;
+  color: #888;
+  font-size: 16px;
+  margin-top: 20px;
+  font-style: italic;
 }
 
 /* 加载更多按钮样式 */
