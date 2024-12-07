@@ -1,44 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>30天日记挑战</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日记记录</title>
+    <link rel="stylesheet" href="styles.css"> <!-- 引入外部CSS文件 -->
 </head>
+
 <body>
-  <div class="header">
-    <h1>四行日记</h1>
-    <h2>用30天的日记改变行为</h2>
-  </div>
-  <div class="main">
-    <!-- 日记记录模块 -->
-    <div class="diary-records">
-      <h3 class="diary-records-title">日记记录</h3>
-      <p id="no-entries-message" class="default-message">快来开启30天的日记吧～</p>
-      <div id="diary-entries"></div>
-      <button id="load-more" class="load-more-button" style="display: none;">加载更多</button>
+    <div class="container">
+        <!-- 顶部标题区域 -->
+        <div class="header">
+            <h1>四行日记与用30天的日记改变行为</h1>
+            <p>记录每天的点滴，逐步改变自己的生活习惯</p>
+        </div>
+
+        <div class="main-content">
+            <!-- 日记记录模块 -->
+            <div class="diary-records">
+                <!-- 固定标题区域 -->
+                <div class="diary-records-title">日记记录</div>
+
+                <!-- 滚动内容区域 -->
+                <div class="diary-records-content">
+                    <div class="default-message">快来开启30天的日记吧～</div>
+
+                    <!-- 示例日记记录 -->
+                    <div class="diary-entry">
+                        <p class="entry-date">2024-12-07 14:35:50</p>
+                        <p><strong>标题:</strong> 今天的日记</p>
+                        <p><strong>内容:</strong> 这是日记内容的示例。</p>
+                    </div>
+                    <div class="diary-entry">
+                        <p class="entry-date">2024-12-06 16:20:30</p>
+                        <p><strong>标题:</strong> 快乐的一天</p>
+                        <p><strong>内容:</strong> 今天心情不错，做了很多有趣的事情。</p>
+                    </div>
+
+                    <!-- 更多日记记录会动态添加到这里 -->
+
+                    <!-- 加载更多按钮 -->
+                    <div class="load-more">加载更多</div>
+                </div>
+            </div>
+
+            <!-- 填写日记模块 -->
+            <div class="diary-form">
+                <div class="diary-form-title">填写日记</div>
+                <form id="diaryForm">
+                    <input type="text" id="title" placeholder="日记标题" required>
+                    <textarea id="content" placeholder="日记内容" required></textarea>
+                    <button type="submit">提交</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <!-- 填写日记模块 -->
-    <div class="diary-form">
-      <h3>填写日记</h3>
-      <form id="diary-form">
-        <label for="action">行为</label>
-        <input type="text" id="action" placeholder="填写你的行为">
-        
-        <label for="phenomenon">现象</label>
-        <textarea id="phenomenon" placeholder="填写观察到的现象"></textarea>
-        
-        <label for="discovery">发现</label>
-        <textarea id="discovery" placeholder="填写你的发现"></textarea>
-        
-        <label for="declaration">宣言</label>
-        <textarea id="declaration" placeholder="填写你的宣言"></textarea>
-        
-        <button type="submit" class="submit-btn">提交</button>
-      </form>
-    </div>
-  </div>
-  <script src="script.js"></script>
+
+    <script src="script.js"></script> <!-- 引入外部JS文件 -->
 </body>
+
 </html>
