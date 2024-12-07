@@ -1,156 +1,154 @@
 /* 通用样式 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  overflow: hidden; /* 禁止全局页面上下滚动 */
 }
 
-/* 容器 */
-.container {
-    width: 80%;
-    margin: 0 auto;
+h1, h2, p {
+  margin: 0;
 }
 
-/* 顶部标题区域 */
-.header {
-    text-align: center;
-    background: linear-gradient(90deg, #5e8c8a, #4b7b7b);
-    padding: 20px 0;
-    color: white;
-    border-radius: 8px;
+textarea {
+  width: calc(100% - 40px); /* 留左右 20px 边距 */
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.header h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
+button {
+  background-color: #FFB6C1;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-.header p {
-    font-size: 18px;
+button:hover {
+  background-color: #FF6F91;
 }
 
-/* 主内容区域 */
-.main-content {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
+/* 顶部标题栏样式 */
+header {
+  background: linear-gradient(to right, #43cea2, #185a9d); /* 青蓝色渐变 */
+  color: white;
+  padding: 20px;
 }
 
-/* 日记记录模块 */
-.diary-records {
-    width: 60%;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    height: 500px;
-    overflow-y: scroll;
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-/* 固定标题 */
-.diary-records-title {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 20px;
+header h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
 }
 
-/* 日记记录内容 */
-.diary-records-content {
-    overflow-y: auto;
+header p {
+  font-size: 16px;
 }
 
-.default-message {
-    font-size: 18px;
-    color: #888;
-    text-align: center;
-    padding: 40px 0;
+/* 主内容布局 */
+main .container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+  gap: 20px;
+  padding: 0 10px;
+  height: calc(100vh - 80px); /* 保持页面高度 */
+  overflow: hidden;
 }
 
-.diary-entry {
-    margin-bottom: 20px;
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
+/* 左侧：日记记录 */
+.diary-list {
+  flex: 2;
+  position: relative;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.entry-date {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 10px;
+.diary-header {
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-.diary-entry p {
-    font-size: 16px;
-    margin-bottom: 5px;
+#diary-entries {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
 }
 
-/* 加载更多按钮 */
+#diary-entries::-webkit-scrollbar {
+  width: 8px;
+}
+
+#diary-entries::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  border-radius: 4px;
+}
+
+#no-entries-message {
+  text-align: center;
+  color: #888;
+  margin-top: 20px;
+}
+
 .load-more {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 16px;
-    color: #0066cc;
-    cursor: pointer;
+  color: #185a9d;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
 }
 
-/* 填写日记模块 */
+.load-more:hover {
+  text-decoration: underline;
+}
+
+/* 右侧：填写日记 */
 .diary-form {
-    width: 35%;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+  flex: 1.5;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  overflow-y: auto;
 }
 
-/* 填写日记表单标题 */
-.diary-form-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
+.form-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(to right, #43cea2, #185a9d); /* 青蓝色渐变 */
+  padding: 10px;
+  color: white;
+  border-radius: 8px 8px 0 0;
 }
 
-/* 填写日记表单 */
-#diaryForm {
-    display: flex;
-    flex-direction: column;
+.diary-form form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
 }
 
-#diaryForm input,
-#diaryForm textarea {
-    padding: 10px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-#diaryForm button {
-    padding: 12px;
-    font-size: 16px;
-    background-color: #5e8c8a;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#diaryForm button:hover {
-    background-color: #4b7b7b;
-}
-
-/* 自适应样式 */
-@media (max-width: 768px) {
-    .main-content {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .diary-records, .diary-form {
-        width: 90%;
-    }
+button[type="submit"] {
+  margin-top: 15px;
+  width: 100%;
+  max-width: 400px;
 }
