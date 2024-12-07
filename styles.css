@@ -17,30 +17,33 @@ textarea {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  resize: none; /* 禁用输入框大小拖动 */
 }
 
 button {
-  background-color: #FFB6C1; /* 温馨的粉色按钮 */
+  background-color: #FFB6C1;
   color: white;
   border: none;
   padding: 10px 15px;
   border-radius: 4px;
   cursor: pointer;
-  width: 100%; /* 调整按钮宽度，与表单宽度一致 */
-  max-width: 400px;
 }
 
 button:hover {
-  background-color: #FF6F91; /* 鼠标悬停时的深粉色 */
+  background-color: #FF6F91;
 }
 
 /* 顶部标题栏样式 */
 header {
-  text-align: left;
-  background-color: #FFE4E1; /* 温馨的浅粉色背景 */
+  background-color: #FFE4E1;
   color: #333;
   padding: 20px;
-  padding-left: 30px; /* 左边对齐，靠左一点 */
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center; /* 居中标题和副标题 */
 }
 
 header h1 {
@@ -63,13 +66,18 @@ main .container {
 
 /* 左侧：日记记录 */
 .diary-list {
-  flex: 2; /* 日记记录区域稍宽 */
+  flex: 2;
   max-height: 600px;
   overflow-y: auto;
   background: white;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
+}
+
+#load-more {
+  display: block;
+  margin: 20px auto; /* 居中加载更多按钮 */
 }
 
 .diary-entry {
@@ -86,7 +94,7 @@ main .container {
 
 /* 右侧：填写日记 */
 .diary-form {
-  flex: 1.5; /* 填写日记稍窄 */
+  flex: 1.5;
   background: white;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -101,4 +109,11 @@ main .container {
 
 button[type="submit"] {
   margin-top: 15px;
+  width: 100%; /* 与表单宽度一致 */
+  max-width: 400px;
+}
+
+/* 修复输入框拖动导致布局错乱问题 */
+textarea {
+  resize: vertical; /* 仅允许垂直方向调整大小，防止布局变化 */
 }
