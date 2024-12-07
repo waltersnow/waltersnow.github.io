@@ -56,28 +56,37 @@ body {
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #ffffff;
-  padding: 0; /* 移除内边距 */
+  max-height: 500px; /* 限制模块总高度 */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-height: 500px;
-  overflow-y: auto; /* 启用垂直滚动 */
+  overflow: hidden; /* 避免滚动内容溢出模块 */
+  position: relative;
 }
 
-/* 日记记录的标题 */
+/* 固定的标题 */
 .diary-records-title {
   font-size: 18px;
   color: #444;
-  height: 60px; /* 固定标题高度 */
-  line-height: 60px; /* 使文本垂直居中 */
+  height: 60px; /* 固定高度 */
+  line-height: 60px; /* 垂直居中 */
   text-align: left;
-  padding: 0 15px; /* 为标题增加左右内边距 */
-  border-bottom: 1px solid #ddd; /* 与内容分隔 */
-  background-color: #ffffff; /* 设置背景颜色 */
-  z-index: 1; /* 保证标题的优先展示 */
+  padding: 0 15px; /* 左右内边距 */
+  background-color: #ffffff; /* 设置背景色 */
+  border-bottom: 1px solid #ddd; /* 分隔线 */
+  position: sticky; /* 固定标题 */
+  top: 0;
+  z-index: 10; /* 保证标题层级高于滚动内容 */
+}
+
+/* 滚动内容区域 */
+.diary-records-content {
+  overflow-y: auto; /* 启用垂直滚动 */
+  max-height: calc(500px - 60px); /* 内容区域高度 = 模块总高度 - 标题高度 */
+  padding: 15px;
 }
 
 /* 每条日记记录的样式 */
 .diary-entry {
-  padding: 15px 15px;
+  padding: 15px 0;
   border-bottom: 1px solid #ddd;
 }
 
