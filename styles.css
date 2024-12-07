@@ -16,8 +16,9 @@ textarea {
   margin-bottom: 15px;
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  resize: none; /* 禁用输入框大小拖动 */
+  border-radius: 8px; /* 调整为圆角，与模块协调 */
+  resize: vertical; /* 仅允许垂直方向调整大小 */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* 内部阴影 */
 }
 
 button {
@@ -25,7 +26,7 @@ button {
   color: white;
   border: none;
   padding: 10px 15px;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -43,7 +44,7 @@ header {
 .header-content {
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center; /* 居中标题和副标题 */
+  text-align: center;
 }
 
 header h1 {
@@ -67,12 +68,37 @@ main .container {
 /* 左侧：日记记录 */
 .diary-list {
   flex: 2;
-  max-height: 600px;
-  overflow-y: auto;
+  position: relative; /* 为固定标题准备 */
   background: white;
   border: 1px solid #ddd;
   border-radius: 8px;
+  padding: 0; /* 内边距为 0 */
+}
+
+.diary-header {
+  background-color: white; /* 标题背景 */
+  border-bottom: 1px solid #ddd; /* 下方边界 */
+  padding: 10px 20px;
+  position: sticky; /* 固定在顶部 */
+  top: 0; /* 固定在父容器顶部 */
+  z-index: 10;
+}
+
+#diary-entries {
+  max-height: 600px;
+  overflow-y: scroll; /* 隐藏默认滚动条 */
+  scrollbar-width: thin; /* 细滚动条 */
+  scrollbar-color: #ddd transparent;
   padding: 20px;
+}
+
+#diary-entries::-webkit-scrollbar {
+  width: 8px; /* 自定义滚动条宽度 */
+}
+
+#diary-entries::-webkit-scrollbar-thumb {
+  background-color: #ddd; /* 滚动条颜色 */
+  border-radius: 4px;
 }
 
 #load-more {
@@ -111,9 +137,4 @@ button[type="submit"] {
   margin-top: 15px;
   width: 100%; /* 与表单宽度一致 */
   max-width: 400px;
-}
-
-/* 修复输入框拖动导致布局错乱问题 */
-textarea {
-  resize: vertical; /* 仅允许垂直方向调整大小，防止布局变化 */
 }
