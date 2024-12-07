@@ -3,17 +3,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const noEntriesMessage = document.getElementById("no-entries-message");
   const loadMoreButton = document.getElementById("load-more");
 
-  // 模拟加载数据
-  let entries = []; // 初始为空
+  // 初始化数据
+  let entries = [];
 
+  // 渲染日记记录
   const renderEntries = () => {
-    diaryEntries.innerHTML = ""; // 清空列表
+    diaryEntries.innerHTML = ""; // 清空现有内容
 
     if (entries.length === 0) {
-      // 如果没有记录，显示缺省文案
+      // 显示缺省文案
       noEntriesMessage.style.display = "block";
     } else {
-      // 如果有记录，隐藏缺省文案
+      // 隐藏缺省文案
       noEntriesMessage.style.display = "none";
 
       entries.forEach(entry => {
@@ -24,17 +25,42 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // 按钮始终紧跟最后一项
+    // 将“加载更多”按钮追加到末尾
     loadMoreButton.style.display = entries.length > 0 ? "block" : "none";
     diaryEntries.appendChild(loadMoreButton);
   };
 
-  // 点击加载更多按钮
+  // 提交表单事件
+  document.getElementById("diary-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    // 获取表单数据
+    const action = document.getElementById("action").value.trim();
+    const phenomenon = document.getElementById("phenomenon").value.trim();
+    const discovery = document.getElementById("discovery").value.trim();
+    const declaration = document.getElementById("declaration").value.trim();
+
+    if (action && phenomenon && discovery && declaration) {
+      const newEntry = `
+        行为: ${action}
+        现象: ${phenomenon}
+        发现: ${discovery}
+        宣言: ${declaration}
+      `;
+      entries.push(newEntry);
+      document.getElementById("diary-form").reset();
+      renderEntries();
+    } else {
+      alert("请完整填写所有日记字段！");
+    }
+  });
+
+  // 加载更多按钮事件
   loadMoreButton.addEventListener("click", () => {
-    entries.push(`这是新日记条目 ${entries.length + 1}`);
+    entries.push("这是加载的新日记内容...");
     renderEntries();
   });
 
-  // 初始化页面
+  // 初始渲染
   renderEntries();
 });
