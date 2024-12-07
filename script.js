@@ -25,10 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         diaryEntries.appendChild(entryDiv);
       });
-    }
 
-    diaryEntries.appendChild(loadMoreButton); // 将按钮始终放置在末尾
-    loadMoreButton.style.display = entries.length > 0 ? "block" : "none";
+      // 控制加载更多按钮的显示逻辑
+      loadMoreButton.style.display = entries.length > 3 ? "block" : "none";
+      if (entries.length > 3) {
+        diaryEntries.appendChild(loadMoreButton); // 放置在最后一个
+      }
+    }
   };
 
   document.getElementById("diary-form").addEventListener("submit", (event) => {
@@ -43,9 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const today = new Date().toISOString().split("T")[0];
       const newEntry = { date: today, action, phenomenon, discovery, declaration };
 
-      entries.push(newEntry);
-      document.getElementById("diary-form").reset();
-      renderEntries();
+      entries.unshift(newEntry); // 添加到数组开头
+      document.getElementById("diary-form").reset(); // 清空表单
+      renderEntries(); // 重新渲染
     } else {
       alert("请完整填写所有字段！");
     }
