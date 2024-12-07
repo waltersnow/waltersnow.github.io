@@ -50,38 +50,34 @@ body {
 
 /* 日记记录模块 */
 .diary-records {
-  background-color: white;
-  padding: 15px;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  margin-top: 20px;
+  background-color: #ffffff;
+  padding: 0; /* 移除内边距 */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative; /* 使标题可以固定 */
+  max-height: 500px;
+  overflow-y: auto; /* 启用垂直滚动 */
 }
 
-/* 固定标题区域 */
+/* 日记记录的标题 */
 .diary-records-title {
   font-size: 18px;
-  font-weight: bold;
   color: #444;
-  margin-bottom: 15px;
+  height: 60px; /* 固定标题高度 */
+  line-height: 60px; /* 使文本垂直居中 */
   text-align: left;
-  position: sticky; /* 固定 */
-  top: 0; /* 固定在顶部 */
-  background-color: white; /* 背景设为白色，以便与内容区域区分 */
-  z-index: 1; /* 确保标题在其他内容之上 */
-  padding: 10px 0; /* 给标题区域一些内边距 */
-}
-
-/* 滚动内容区域 */
-.diary-records-content {
-  overflow-y: auto; /* 启用垂直滚动 */
-  max-height: calc(500px - 60px); /* 内容区域高度 = 模块总高度 - 标题高度 */
-  padding: 15px;
+  padding: 0 15px; /* 为标题增加左右内边距 */
+  border-bottom: 1px solid #ddd; /* 与内容分隔 */
+  background-color: #ffffff; /* 设置背景颜色 */
+  z-index: 1; /* 保证标题的优先展示 */
 }
 
 /* 每条日记记录的样式 */
 .diary-entry {
-  padding: 15px 0;
+  padding: 15px 15px;
   border-bottom: 1px solid #ddd;
 }
 
