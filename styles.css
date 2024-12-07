@@ -14,30 +14,33 @@ textarea {
   width: 100%;
   height: 60px;
   margin-bottom: 15px;
-  padding: 5px;
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
 button {
-  background-color: #007BFF;
+  background-color: #FFB6C1; /* 温馨的粉色按钮 */
   color: white;
   border: none;
   padding: 10px 15px;
   border-radius: 4px;
   cursor: pointer;
+  width: 100%; /* 调整按钮宽度，与表单宽度一致 */
+  max-width: 400px;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #FF6F91; /* 鼠标悬停时的深粉色 */
 }
 
 /* 顶部标题栏样式 */
 header {
-  text-align: center;
-  background-color: #007BFF;
-  color: white;
-  padding: 20px 10px;
+  text-align: left;
+  background-color: #FFE4E1; /* 温馨的浅粉色背景 */
+  color: #333;
+  padding: 20px;
+  padding-left: 30px; /* 左边对齐，靠左一点 */
 }
 
 header h1 {
@@ -50,26 +53,23 @@ header p {
 }
 
 /* 主内容布局 */
-main {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 0 10px;
+main .container {
   display: flex;
-  flex-direction: column;
+  max-width: 1200px;
+  margin: 20px auto;
   gap: 20px;
+  padding: 0 10px;
 }
 
-section {
+/* 左侧：日记记录 */
+.diary-list {
+  flex: 2; /* 日记记录区域稍宽 */
+  max-height: 600px;
+  overflow-y: auto;
   background: white;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
-}
-
-/* 日记记录 */
-.diary-list {
-  max-height: 300px;
-  overflow-y: auto;
 }
 
 .diary-entry {
@@ -82,4 +82,23 @@ section {
 
 .diary-entry p {
   margin: 5px 0;
+}
+
+/* 右侧：填写日记 */
+.diary-form {
+  flex: 1.5; /* 填写日记稍窄 */
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.diary-form form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+button[type="submit"] {
+  margin-top: 15px;
 }
