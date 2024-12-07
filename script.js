@@ -1,44 +1,37 @@
-const form = document.getElementById('diary-form');
-const diaryEntriesContainer = document.getElementById('diary-entries');
-const loadMoreButton = document.getElementById('load-more');
+document.addEventListener("DOMContentLoaded", () => {
+  const diaryEntries = document.getElementById("diary-entries");
+  const noEntriesMessage = document.getElementById("no-entries-message");
+  const loadMoreButton = document.getElementById("load-more");
 
-let entries = [];
-let displayCount = 3;
+  // 模拟加载数据
+  let entries = [];
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
+  const renderEntries = () => {
+    diaryEntries.innerHTML = ""; // 清空现有内容
 
-  const newEntry = {
-    date: new Date().toLocaleDateString(),
-    action: form.action.value,
-    phenomenon: form.phenomenon.value,
-    discovery: form.discovery.value,
-    declaration: form.declaration.value,
+    if (entries.length === 0) {
+      noEntriesMessage.style.display = "block";
+      loadMoreButton.style.display = "none";
+    } else {
+      noEntriesMessage.style.display = "none";
+
+      entries.forEach(entry => {
+        const entryDiv = document.createElement("div");
+        entryDiv.className = "diary-entry";
+        entryDiv.innerHTML = `<p>${entry}</p>`;
+        diaryEntries.appendChild(entryDiv);
+      });
+
+      loadMoreButton.style.display = "block";
+    }
   };
 
-  entries.unshift(newEntry);
-  form.reset();
-  renderEntries();
-});
-
-function renderEntries() {
-  diaryEntriesContainer.innerHTML = '';
-  const visibleEntries = entries.slice(0, displayCount);
-  visibleEntries.forEach(entry => {
-    const entryDiv = document.createElement('div');
-    entryDiv.classList.add('diary-entry');
-    entryDiv.innerHTML = `
-      <p><strong>${entry.date}</strong></p>
-      <p><strong>行为:</strong> ${entry.action}</p>
-      <p><strong>现象:</strong> ${entry.phenomenon}</p>
-      <p><strong>发现:</strong> ${entry.discovery}</p>
-      <p><strong>宣言:</strong> ${entry.declaration}</p>
-    `;
-    diaryEntriesContainer.appendChild(entryDiv);
+  // 加载更多按钮事件
+  loadMoreButton.addEventListener("click", () => {
+    entries.push("这是新的日记内容...");
+    renderEntries();
   });
-}
 
-loadMoreButton.addEventListener('click', function () {
-  displayCount += 3;
+  // 初始化
   renderEntries();
 });
