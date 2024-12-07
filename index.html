@@ -1,33 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>四行日记</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header>
-    <div class="header-content">
-      <h1>四行日记</h1>
-      <p>用30天的日记改变行为</p>
-    </div>
-  </header>
-
-  <main>
-    <div class="container">
-      <!-- 左侧：日记记录 -->
-      <section class="diary-list">
-        <div class="diary-header">
-          <h2>日记记录</h2>
-        </div>
-        <div id="diary-entries">
-          <!-- 如果没有记录，显示缺省文案 -->
-          <p id="no-entries-message">快来开启30天的日记吧～</p>
-        </div>
-        <!-- 按钮直接跟随日记列表的最后一项 -->
-        <p id="load-more" style="display: none;" class="load-more">加载更多</p>
-      </section>
-
-      <!-- 右侧：填写日记 -->
-      <section
+<section class="diary-list">
+  <div class="diary-header">
+    <h2>日记记录</h2>
+  </div>
+  <div id="diary-entries">
+    <!-- 缺省文案 -->
+    <p id="no-entries-message" class="default-message">快来开启30天的日记吧～</p>
+  </div>
+  <p id="load-more" class="load-more">加载更多</p>
+</section>
