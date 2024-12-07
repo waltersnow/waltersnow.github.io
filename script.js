@@ -3,75 +3,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const noEntriesMessage = document.getElementById("no-entries-message");
   const loadMoreButton = document.getElementById("load-more");
 
+  // 模拟加载数据
   let entries = [];
-  let entriesToShow = 3; // 控制初始加载的日记数
 
   const renderEntries = () => {
-    diaryEntries.innerHTML = ""; // 清空日记记录
+    diaryEntries.innerHTML = ""; // 清空现有内容
 
     if (entries.length === 0) {
-      noEntriesMessage.style.display = "block"; // 显示缺省文案
+      noEntriesMessage.style.display = "block";
+      loadMoreButton.style.display = "none";
     } else {
-      noEntriesMessage.style.display = "none"; // 隐藏缺省文案
+      noEntriesMessage.style.display = "none";
 
-      // 显示当前要展示的日记条数
-      const entriesToRender = entries.slice(0, entriesToShow);
-
-      entriesToRender.forEach(entry => {
+      entries.forEach(entry => {
         const entryDiv = document.createElement("div");
         entryDiv.className = "diary-entry";
-        entryDiv.innerHTML = `
-          <p class="entry-date">${formatDate(entry.date)}</p>
-          <p><strong>行为:</strong> ${entry.action}</p>
-          <p><strong>现象:</strong> ${entry.phenomenon}</p>
-          <p><strong>发现:</strong> ${entry.discovery}</p>
-          <p><strong>宣言:</strong> ${entry.declaration}</p>
-        `;
+        entryDiv.innerHTML = `<p>${entry}</p>`;
         diaryEntries.appendChild(entryDiv);
       });
 
-      // 控制加载更多按钮的显示逻辑
-      loadMoreButton.style.display = entries.length > entriesToShow ? "block" : "none";
+      loadMoreButton.style.display = "block";
     }
   };
 
-  // 格式化日期为年月日时分秒
-  function formatDate(dateString) {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
-
-    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-  }
-
-  document.getElementById("diary-form").addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const action = document.getElementById("action").value.trim();
-    const phenomenon = document.getElementById("phenomenon").value.trim();
-    const discovery = document.getElementById("discovery").value.trim();
-    const declaration = document.getElementById("declaration").value.trim();
-
-    if (action && phenomenon && discovery && declaration) {
-      const today = new Date().toISOString(); // 获取当前时间
-      const newEntry = { date: today, action, phenomenon, discovery, declaration };
-
-      entries.unshift(newEntry); // 添加到数组开头
-      document.getElementById("diary-form").reset(); // 清空表单
-      renderEntries(); // 重新渲染
-    } else {
-      alert("请完整填写所有字段！");
-    }
-  });
-
+  // 加载更多按钮事件
   loadMoreButton.addEventListener("click", () => {
-    entriesToShow += 1; // 每次点击加载一条记录
+    entries.push("这是新的日记内容...");
     renderEntries();
   });
 
+  // 初始化
   renderEntries();
 });
