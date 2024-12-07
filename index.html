@@ -13,30 +13,34 @@
   </header>
 
   <main>
-    <section class="diary-list">
-      <h2>日记记录</h2>
-      <div id="diary-entries"></div>
-      <button id="load-more">点击加载更多</button>
-    </section>
+    <div class="container">
+      <!-- 左侧：日记记录 -->
+      <section class="diary-list">
+        <h2>日记记录</h2>
+        <div id="diary-entries"></div>
+        <button id="load-more">点击加载更多</button>
+      </section>
 
-    <section class="diary-form">
-      <h2>填写日记</h2>
-      <form id="diary-form">
-        <label for="action">行为</label>
-        <textarea id="action" name="action" required></textarea>
-        
-        <label for="phenomenon">现象</label>
-        <textarea id="phenomenon" name="phenomenon" required></textarea>
-        
-        <label for="discovery">发现</label>
-        <textarea id="discovery" name="discovery" required></textarea>
-        
-        <label for="declaration">宣言</label>
-        <textarea id="declaration" name="declaration" required></textarea>
-        
-        <button type="submit">提交</button>
-      </form>
-    </section>
+      <!-- 右侧：填写日记 -->
+      <section class="diary-form">
+        <h2>填写日记</h2>
+        <form id="diary-form">
+          <label for="action">行为</label>
+          <textarea id="action" name="action" required></textarea>
+          
+          <label for="phenomenon">现象</label>
+          <textarea id="phenomenon" name="phenomenon" required></textarea>
+          
+          <label for="discovery">发现</label>
+          <textarea id="discovery" name="discovery" required></textarea>
+          
+          <label for="declaration">宣言</label>
+          <textarea id="declaration" name="declaration" required></textarea>
+          
+          <button type="submit">提交</button>
+        </form>
+      </section>
+    </div>
   </main>
 
   <script src="script.js"></script>
