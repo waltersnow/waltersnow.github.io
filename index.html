@@ -1,8 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>四行日记</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-<a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=ww5c83a78b448d2dc0&redirect_uri=https%3A%2F%2Fwaltersnow.github.io%2F&response_type=code&scope=snsapi_base&state=#wechat_redirect">click here</a>
+  <div class="container">
+    <div class="diary-list">
+      <h2>四行日记</h2>
+      <p>用30天的日记改变行为</p>
+      <div id="diary-entries"></div>
+      <button id="load-more">点击加载更多</button>
+    </div>
+
+    <div class="diary-form">
+      <h3>填写日记</h3>
+      <form id="diary-form">
+        <label for="action">行为</label>
+        <textarea id="action" name="action" required></textarea>
+        
+        <label for="phenomenon">现象</label>
+        <textarea id="phenomenon" name="phenomenon" required></textarea>
+        
+        <label for="discovery">发现</label>
+        <textarea id="discovery" name="discovery" required></textarea>
+        
+        <label for="declaration">宣言</label>
+        <textarea id="declaration" name="declaration" required></textarea>
+        
+        <button type="submit">提交</button>
+      </form>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
