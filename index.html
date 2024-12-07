@@ -7,16 +7,20 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <div class="diary-list">
-      <h2>四行日记</h2>
-      <p>用30天的日记改变行为</p>
+  <header>
+    <h1>四行日记</h1>
+    <p>用30天的日记改变行为</p>
+  </header>
+
+  <main>
+    <section class="diary-list">
+      <h2>日记记录</h2>
       <div id="diary-entries"></div>
       <button id="load-more">点击加载更多</button>
-    </div>
+    </section>
 
-    <div class="diary-form">
-      <h3>填写日记</h3>
+    <section class="diary-form">
+      <h2>填写日记</h2>
       <form id="diary-form">
         <label for="action">行为</label>
         <textarea id="action" name="action" required></textarea>
@@ -32,8 +36,9 @@
         
         <button type="submit">提交</button>
       </form>
-    </div>
-  </div>
+    </section>
+  </main>
+
   <script src="script.js"></script>
 </body>
 </html>
