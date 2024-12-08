@@ -3,35 +3,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const noEntriesMessage = document.getElementById("no-entries-message");
   const loadMoreButton = document.getElementById("load-more");
 
-  // 模拟加载数据
   let entries = [];
+  let entriesToShow = 3; // 控制初始加载的日记数
 
   const renderEntries = () => {
-    diaryEntries.innerHTML = ""; // 清空现有内容
+    diaryEntries.innerHTML = ""; // 清空日记记录
 
     if (entries.length === 0) {
-      noEntriesMessage.style.display = "block";
-      loadMoreButton.style.display = "none";
+      noEntriesMessage.style.display = "block"; // 显示缺省文案
     } else {
-      noEntriesMessage.style.display = "none";
+      noEntriesMessage.style.display = "none"; // 隐藏缺省文案
 
-      entries.forEach(entry => {
+      // 显示当前要展示的日记条数
+      const entriesToRender = entries.slice(0, entriesToShow);
+
+      entriesToRender.forEach(entry => {
         const entryDiv = document.createElement("div");
         entryDiv.className = "diary-entry";
-        entryDiv.innerHTML = `<p>${entry}</p>`;
+        entryDiv.innerHTML = `
+          <p class="entry-date">${entry.date}</p>
+          <p><strong>行为:</strong> ${entry.action}</p>
+          <p><strong>现象:</strong> ${entry.phenomenon}</p>
+          <p><strong>发现:</strong> ${entry.discovery}</p>
+          <p><strong>宣言:</strong> ${entry.declaration}</p>
+        `;
         diaryEntries.appendChild(entryDiv);
       });
 
-      loadMoreButton.style.display = "block";
+      // 控制加载更多按钮的显示逻辑
+      loadMoreButton.style.display = entries.length > entriesToShow ? "block" : "none";
     }
   };
 
-  // 加载更多按钮事件
-  loadMoreButton.addEventListener("click", () => {
-    entries.push("这是新的日记内容...");
-    renderEntries();
-  });
-
-  // 初始化
-  renderEntries();
-});
+  document.getElementById("diary-form").addEventListener("submit", (event) => {
