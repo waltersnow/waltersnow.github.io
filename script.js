@@ -36,3 +36,29 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   document.getElementById("diary-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const action = document.getElementById("action").value.trim();
+    const phenomenon = document.getElementById("phenomenon").value.trim();
+    const discovery = document.getElementById("discovery").value.trim();
+    const declaration = document.getElementById("declaration").value.trim();
+
+    if (action && phenomenon && discovery && declaration) {
+      const today = new Date().toISOString().split("T")[0];
+      const newEntry = { date: today, action, phenomenon, discovery, declaration };
+
+      entries.unshift(newEntry); // 添加到数组开头
+      document.getElementById("diary-form").reset(); // 清空表单
+      renderEntries(); // 重新渲染
+    } else {
+      alert("请完整填写所有字段！");
+    }
+  });
+
+  loadMoreButton.addEventListener("click", () => {
+    entriesToShow += 1; // 每次点击加载一条记录
+    renderEntries();
+  });
+
+  renderEntries();
+});
