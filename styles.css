@@ -98,6 +98,8 @@ main {
 .diary-records-title {
     font-size: 20px;
     font-weight: bold;
+    height: 60px; /* 固定标题高度 */
+    line-height: 60px; /* 使文本垂直居中 */
 }
 
 .diary-records-content {
