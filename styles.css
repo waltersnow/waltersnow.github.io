@@ -30,12 +30,13 @@ header p {
 
 main {
     display: flex;
+    justify-content: center; /* 中心对齐 */
     gap: 20px;
 }
 
 /* 填写日记模块 */
 .diary-entry {
-    flex: 1;
+    width: 400px; /* 固定宽度 */
     background-color: #fff;
     padding: 20px;
     border: 1px solid #ddd;
@@ -75,7 +76,7 @@ main {
 
 /* 日记记录模块 */
 .diary-records {
-    flex: 2;
+    width: 600px; /* 固定宽度 */
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
