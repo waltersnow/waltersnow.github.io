@@ -50,31 +50,27 @@ h1, h2 {
 
 /* 日记记录模块 */
 .diary-records {
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #ffffff;
-  padding: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-height: 500px;
-  overflow-y: auto; /* 只允许日记模块滚动 */
+    position: relative;
+    overflow-y: auto; /* 设置为只允许内部内容滚动 */
+    max-height: 400px; /* 限制模块高度 */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
 }
 
-/* 日记记录模块标题固定 */
+/* 日记记录标题固定 */
 .diary-records-title {
+    position: sticky; /* 使用 sticky 来固定标题 */
+    top: 0; /* 距离顶部为 0 */
+    z-index: 10; /* 确保标题层级高于内容 */
+    background-color: white; /* 标题背景色，遮挡内容 */
+    border-bottom: 1px solid #ddd; /* 底部分隔线 */
     font-size: 22px;
     font-weight: bold;
     padding: 10px;
-    background-color: white; /* 确保背景色完全覆盖 */
-    position: sticky; /* 固定标题 */
-    top: 0; /* 距离顶部为0 */
-    z-index: 100; /* 提高层级，确保高于其他内容 */
-    border-bottom: 1px solid #ddd; /* 添加底部分割线 */
-    height: 60px; /* 确保标题区域高度固定，覆盖足够空间 */
+    height: 60px; /* 确保标题区域有足够空间 */
     display: flex;
-    align-items: center; /* 垂直居中标题文字 */
+    align-items: center;
 }
 
 .diary-records::-webkit-scrollbar {
