@@ -180,7 +180,7 @@ h1, h2 {
 .submit-btn {
   width: 100%; /* 按钮宽度与输入框一致 */
   padding: 10px;
-  background: linear-gradient(to right, #56cfe1, #72efdd); /* 青蓝色渐变 */
+  background: linear-gradient(to right, #43cea2, #185a9d); /* 青蓝色渐变 */
   color: #ffffff;
   font-size: 16px;
   font-weight: bold;
