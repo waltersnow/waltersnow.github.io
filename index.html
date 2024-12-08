@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>30天日记挑战</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>四行日记</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="header">
-    <h1>四行日记</h1>
-    <h2>用30天的日记改变行为</h2>
-  </div>
-  <div class="main">
-    <!-- 日记记录模块 -->
-    <div class="diary-records">
-      <div class="diary-records-title">日记记录</div> <!-- 标题 -->
-      <p id="no-entries-message" class="default-message">快来开启30天的日记吧～</p>
-      <div id="diary-entries"></div>
-      <button id="load-more" class="load-more-button" style="display: none;">加载更多</button>
+    <div class="container">
+        <header>
+            <h1>四行日记</h1>
+            <p>用30天的日记改变行为</p>
+        </header>
+        <main>
+            <div class="diary-entry">
+                <h2>填写日记</h2>
+                <form id="diaryForm">
+                    <label for="action">行为</label>
+                    <input type="text" id="action" placeholder="请输入行为">
+                    <label for="phenomenon">现象</label>
+                    <input type="text" id="phenomenon" placeholder="请输入现象">
+                    <label for="discovery">发现</label>
+                    <input type="text" id="discovery" placeholder="请输入发现">
+                    <label for="declaration">宣言</label>
+                    <input type="text" id="declaration" placeholder="请输入宣言">
+                    <button type="submit">提交</button>
+                </form>
+            </div>
+            <div class="diary-records">
+                <div class="diary-records-header">
+                    <span class="diary-records-title">日记记录</span>
+                </div>
+                <div class="diary-records-content" id="diaryContent">
+                    <div class="diary-records-placeholder" id="placeholder">
+                        快来开启30天的日记吧～
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-    <!-- 填写日记模块 -->
-    <div class="diary-form">
-      <h3>填写日记</h3>
-      <form id="diary-form">
-        <label for="action">行为</label>
-        <input type="text" id="action" placeholder="填写你的行为">
-        
-        <label for="phenomenon">现象</label>
-        <textarea id="phenomenon" placeholder="填写观察到的现象"></textarea>
-        
-        <label for="discovery">发现</label>
-        <textarea id="discovery" placeholder="填写你的发现"></textarea>
-        
-        <label for="declaration">宣言</label>
-        <textarea id="declaration" placeholder="填写你的宣言"></textarea>
-        
-        <button type="submit" class="submit-btn">提交</button>
-      </form>
-    </div>
-  </div>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

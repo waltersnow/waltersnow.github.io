@@ -1,64 +1,49 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const diaryEntries = document.getElementById("diary-entries");
-  const noEntriesMessage = document.getElementById("no-entries-message");
-  const loadMoreButton = document.getElementById("load-more");
+const diaryContent = document.getElementById('diaryContent');
+const placeholder = document.getElementById('placeholder');
+const diaryForm = document.getElementById('diaryForm');
 
-  let entries = [];
-  let entriesToShow = 3; // 控制初始加载的日记数
+// 假数据（实际使用中替换为后端数据）
+const diaryData = [];
 
-  const renderEntries = () => {
-    diaryEntries.innerHTML = ""; // 清空日记记录
-
-    if (entries.length === 0) {
-      noEntriesMessage.style.display = "block"; // 显示缺省文案
+// 渲染日记记录
+function renderDiaryRecords() {
+    diaryContent.innerHTML = '';
+    if (diaryData.length === 0) {
+        placeholder.classList.add('visible');
     } else {
-      noEntriesMessage.style.display = "none"; // 隐藏缺省文案
-
-      // 显示当前要展示的日记条数
-      const entriesToRender = entries.slice(0, entriesToShow);
-
-      entriesToRender.forEach(entry => {
-        const entryDiv = document.createElement("div");
-        entryDiv.className = "diary-entry";
-        entryDiv.innerHTML = `
-          <p class="entry-date">${entry.date}</p>
-          <p><strong>行为:</strong> ${entry.action}</p>
-          <p><strong>现象:</strong> ${entry.phenomenon}</p>
-          <p><strong>发现:</strong> ${entry.discovery}</p>
-          <p><strong>宣言:</strong> ${entry.declaration}</p>
-        `;
-        diaryEntries.appendChild(entryDiv);
-      });
-
-      // 控制加载更多按钮的显示逻辑
-      loadMoreButton.style.display = entries.length > entriesToShow ? "block" : "none";
+        placeholder.classList.remove('visible');
+        diaryData.forEach((entry) => {
+            const diaryRecord = document.createElement('div');
+            diaryRecord.className = 'diary-record';
+            diaryRecord.innerHTML = `
+                <div class="diary-date">${entry.date}</div>
+                <div class="diary-item"><b>行为：</b>${entry.action}</div>
+                <div class="diary-item"><b>现象：</b>${entry.phenomenon}</div>
+                <div class="diary-item"><b>发现：</b>${entry.discovery}</div>
+                <div class="diary-item"><b>宣言：</b>${entry.declaration}</div>
+            `;
+            diaryContent.appendChild(diaryRecord);
+        });
     }
-  };
+}
 
-  document.getElementById("diary-form").addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const action = document.getElementById("action").value.trim();
-    const phenomenon = document.getElementById("phenomenon").value.trim();
-    const discovery = document.getElementById("discovery").value.trim();
-    const declaration = document.getElementById("declaration").value.trim();
+// 提交表单
+diaryForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const action = document.getElementById('action').value.trim();
+    const phenomenon = document.getElementById('phenomenon').value.trim();
+    const discovery = document.getElementById('discovery').value.trim();
+    const declaration = document.getElementById('declaration').value.trim();
 
     if (action && phenomenon && discovery && declaration) {
-      const today = new Date().toISOString().split("T")[0];
-      const newEntry = { date: today, action, phenomenon, discovery, declaration };
-
-      entries.unshift(newEntry); // 添加到数组开头
-      document.getElementById("diary-form").reset(); // 清空表单
-      renderEntries(); // 重新渲染
+        const date = new Date().toISOString().replace('T', ' ').slice(0, 19);
+        diaryData.push({ date, action, phenomenon, discovery, declaration });
+        renderDiaryRecords();
+        diaryForm.reset();
     } else {
-      alert("请完整填写所有字段！");
+        alert('请填写所有字段！');
     }
-  });
-
-  loadMoreButton.addEventListener("click", () => {
-    entriesToShow += 1; // 每次点击加载一条记录
-    renderEntries();
-  });
-
-  renderEntries();
 });
+
+// 初始化渲染
+renderDiaryRecords();
