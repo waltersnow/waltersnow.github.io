@@ -21,7 +21,7 @@ h1, h2 {
 .header {
   width: 100%;
   padding: 20px 0;
-  background: linear-gradient(to right, #56cfe1, #72efdd); /* 青蓝色渐变 */
+  background: linear-gradient(to right, #43cea2, #185a9d); /* 青蓝色渐变 */
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
